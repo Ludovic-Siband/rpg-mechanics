@@ -1,10 +1,11 @@
 package Model.CharacterClasses;
 
-import Model.CharacterClass;
+import Model.Character;
+import Model.ICharacterClass;
 import lombok.Data;
 
 @Data
-public class Wizard extends CharacterClass {
+public class Wizard extends Character implements ICharacterClass {
 
 
     public Wizard(String name) {
@@ -16,7 +17,7 @@ public class Wizard extends CharacterClass {
     }
 
     @Override
-    public void attack(CharacterClass character) {
+    public void attack(Character character) {
         System.out.println(this.name + " is attacking!");
 
         int opponentDexterity = character.getDexterity();

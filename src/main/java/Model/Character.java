@@ -10,6 +10,5 @@ public abstract class Character {
     protected int strength;
     protected int dexterity;
     protected int defense;
-    protected CharacterClass characterClass;
     protected CharacterRace characterRace;
 }

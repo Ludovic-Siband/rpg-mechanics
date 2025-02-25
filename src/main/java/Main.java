@@ -1,7 +1,5 @@
 import Model.Character;
-import Model.CharacterClass;
 import Model.CharacterClasses.Archer;
-import Model.CharacterClasses.Warrior;
 import Model.CharacterClasses.Wizard;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -15,11 +13,8 @@ public class Main {
         Character archer = new Archer("Legolas");
 
         System.out.println(archer.getHealthPoints());
-        ((Wizard) wizard).attack((CharacterClass) archer);
+        ((Wizard) wizard).attack(archer);
         System.out.println(archer.getHealthPoints());
-
-
-
 
     }
 }

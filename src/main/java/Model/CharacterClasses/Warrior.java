@@ -1,8 +1,9 @@
 package Model.CharacterClasses;
 
-import Model.CharacterClass;
+import Model.Character;
+import Model.ICharacterClass;
 
-public class Warrior extends CharacterClass {
+public class Warrior extends Character implements ICharacterClass {
 
     public Warrior(String name) {
         this.name = name;
@@ -13,7 +14,7 @@ public class Warrior extends CharacterClass {
     }
 
     @Override
-    public void attack(CharacterClass character) {
+    public void attack(Character character) {
         System.out.println(this.name + " is attacking!");
 
         int opponentDexterity = character.getDexterity();
