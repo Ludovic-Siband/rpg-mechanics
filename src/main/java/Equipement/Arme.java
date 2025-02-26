@@ -1,3 +1,5 @@
+package Equipement;
+
 import lombok.Data;
 
 @Data
@@ -5,7 +7,7 @@ public class Arme extends Equipement {
     private String type;
     private int PowerAttack;
 
-    public Arme (String name, int weight, double price,String type,int PowerAttack ) {
+    public Arme(String name, int weight, double price, String type, int PowerAttack ) {
         super(name, weight, price);
         this.type = type;
         this.PowerAttack = PowerAttack;

@@ -1,3 +1,5 @@
+package Equipement;
+
 import lombok.Data;
 
 @Data
