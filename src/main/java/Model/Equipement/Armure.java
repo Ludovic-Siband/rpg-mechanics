@@ -1,9 +1,9 @@
-package Equipement;
+package Model.Equipement;
 
 import lombok.Data;
 
 @Data
-public class Armure extends Equipement {
+public abstract class Armure extends Equipement {
     private String type;
     private int defense;
 
@@ -15,6 +15,7 @@ public class Armure extends Equipement {
 
     @Override
     public String toString() {
-        return "mon armure s'appelle " + this.name + " elle pese " + this.weight + " kg "+" elle coute " + this.price + " piece d'or "+ " c'est un " + this.type + " elle a " + this.defense +" de defenses" ;
+        return "My armor is called " + this.name + ", it weighs " + this.weight + " kg, " + " it costs " + this.price + " gold coins, " + " it is a " + this.type + ", and it has " + this.defense + " defense points.";
+
     }
 }

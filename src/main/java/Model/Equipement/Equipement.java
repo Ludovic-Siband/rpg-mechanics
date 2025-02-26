@@ -1,9 +1,9 @@
-package Equipement;
+package Model.Equipement;
 
 import lombok.Data;
 
 @Data
-public class Equipement {
+public abstract class Equipement {
     public String name;
     public int  weight;
     public double price;
@@ -13,9 +13,6 @@ public class Equipement {
         this.weight = weight;
         this.price = price;
     }
-
-
-
 
 }
 
