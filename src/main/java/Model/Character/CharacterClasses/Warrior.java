@@ -1,7 +1,6 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
-import Model.Character.ICharacterClass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,11 +9,12 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Warrior extends Character implements ICharacterClass {
+public class Warrior extends Character {
 
     public Warrior(String name) {
         this.name = name;
-        this.healthPoints = 115;
+        this.maxHealthPoints = 115;
+        this.healthPoints = this.maxHealthPoints;
         this.strength = 20;
         this.dexterity = 5;
         this.defense = 10;
@@ -26,21 +26,28 @@ public class Warrior extends Character implements ICharacterClass {
         System.out.println(this.name + " casts BROOAAAH!");
 
         int opponentDexterity = character.getDexterity();
-        double criticalFailChance = switch (opponentDexterity) {
-            case 5 -> 0.25;
-            case 10 -> 0.15;
-            case 15 -> 0.05;
-            default -> 0.0;
-        };
+        int opponentDefense = character.getDefense();
+
+        // Calculate the critical fail chance
+        double criticalFailChance = Math.max(0, (30.0 - opponentDexterity) / 100.0);
+        // Calculate the critical hit chance
+        double criticalHitChance = Math.min(0.5, this.dexterity / 100.0);
+        boolean isCriticalHit = Math.random() < criticalHitChance;
+        double damageMultiplier = isCriticalHit ? 1.5 : 1.0;
+
+        // Calculate the damage
+        int baseDamage = this.dexterity;
+        int finalDamage = (int) ((baseDamage - ((double) opponentDefense / 2)) * damageMultiplier);
+        finalDamage = Math.max(finalDamage, 1);
+        character.setHealthPoints(character.getHealthPoints() - finalDamage);
 
         if (Math.random() < criticalFailChance) {
-            System.out.println("BROOAAAH is not very effective...");
-        } else {
-            character.setHealthPoints(character.getHealthPoints() - 15);
-            System.out.println("BROOAAAH is successful!");
+            System.out.println("BROOAAAH is not very effective... The attack misses!");
+            return;
         }
-        // "Wow, BROOAAAH is super effective !"
 
+        System.out.println(isCriticalHit ? "Wow, BROOAAAH is super effective !" : "TWIIISH is successful!");
+        System.out.println(character.getName()+ " loose " + finalDamage + " health points.");
         System.out.println(character.getName()+ " have " + character.getHealthPoints() + " health points left.");
     }
 

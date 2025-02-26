@@ -1,7 +1,6 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
-import Model.Character.ICharacterClass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,11 +9,12 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Archer extends Character implements ICharacterClass {
+public class Archer extends Character {
 
     public Archer(String name) {
         this.name = name;
-        this.healthPoints = 85;
+        this.maxHealthPoints = 85;
+        this.healthPoints = maxHealthPoints;
         this.strength = 10;
         this.dexterity = 20;
         this.defense = 5;
@@ -47,6 +47,7 @@ public class Archer extends Character implements ICharacterClass {
         }
 
         System.out.println(isCriticalHit ? "Wow, TWIIISH is super effective !" : "TWIIISH is successful!");
+
         System.out.println(character.getName()+ " loose " + finalDamage + " health points.");
         System.out.println(character.getName()+ " have " + character.getHealthPoints() + " health points left.");
     }

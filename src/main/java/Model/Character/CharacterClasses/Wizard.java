@@ -1,7 +1,6 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
-import Model.Character.ICharacterClass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,12 +9,13 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Wizard extends Character implements ICharacterClass {
+public class Wizard extends Character {
 
 
     public Wizard(String name) {
         this.name = name;
-        this.healthPoints = 100;
+        this.maxHealthPoints = 100;
+        this.healthPoints = this.maxHealthPoints;
         this.strength = 5;
         this.dexterity = 10;
         this.defense = 15;
