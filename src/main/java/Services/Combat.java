@@ -47,7 +47,7 @@ public class Combat {
 
         }
         System.out.println("===========================");
-        System.out.println("\n----- FIGHT ENDED -----\n");
+        System.out.println("\n  ----- FIGHT ENDED -----\n");
         System.out.println("===========================");
     }
 

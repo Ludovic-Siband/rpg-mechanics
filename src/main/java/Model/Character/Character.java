@@ -25,7 +25,7 @@ public abstract class Character {
      */
     public void attack(Character target) {
         if (this.getHealthPoints() <= 0){
-            System.out.println("\n"+this.name + "is dead and cannot attack.");
+            System.out.println("\n"+this.name + " is dead and cannot attack.");
             return;
         }
         String weaponName = (equippedWeapon != null) ? equippedWeapon.getName() : "bare hands";
