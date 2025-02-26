@@ -1,16 +1,19 @@
 package Model.Equipment.Weapons;
 
+import Model.Character.CharacterClassType;
 import Model.Equipment.Weapon;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Sword extends Weapon {
-    public Sword(String name, int weight, double price, String type, int PowerAttack) {
-        super(name, weight, price, type, PowerAttack);
-    }
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 
+    public Sword() {
+        this.name = "Sword";
+        this.weight = 10;
+        this.price = 100;
+        this.PowerAttack = 10;
+        this.allowedCharacterClasses = List.of(CharacterClassType.WARRIOR);
+    }
 }

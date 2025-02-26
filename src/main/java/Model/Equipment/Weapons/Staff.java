@@ -1,17 +1,19 @@
 package Model.Equipment.Weapons;
 
+import Model.Character.CharacterClassType;
 import Model.Equipment.Weapon;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Staff extends Weapon {
 
-
-    public Staff(String name, int weight, double price, String type,int PowerAttack) {
-        super(name, weight, price, type, PowerAttack );
-    }
-    @Override
-    public String toString() {
-        return super.toString();
+    public Staff() {
+        this.name = "Staff";
+        this.weight = 10;
+        this.price = 100;
+        this.PowerAttack = 10;
+        this.allowedCharacterClasses = List.of(CharacterClassType.WIZARD);
     }
 }

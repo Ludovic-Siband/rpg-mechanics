@@ -15,7 +15,7 @@ public class Combat {
 
     public void start() {
 
-        while (player.getHealthPoints() > 0 || enemy.getHealthPoints() > 0) {
+        while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -26,17 +26,19 @@ public class Combat {
 
             switch (choice) {
                 case 1:
-                    System.out.println("You chose to attack!");
+                    System.out.println("\nYou chose to attack!");
                     this.attack(player, enemy);
                     break;
                 case 2:
-                    System.out.println("You chose to defend!");
+                    System.out.println("\nYou chose to defend!");
                     break;
                 case 3:
-                    System.out.println("You used a health potion!");
+                    System.out.println("\nYou used a health potion!");
+                    this.drinkHealthPotion(player);
+                    enemy.attack(player);
                     break;
                 case 4:
-                    System.out.println("You fled from the battle!");
+                    System.out.println("\nYou fled from the battle!");
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
@@ -44,8 +46,20 @@ public class Combat {
 
 
         }
+        System.out.println("===========================");
+        System.out.println("\n----- FIGHT ENDED -----\n");
+        System.out.println("===========================");
+    }
 
-        System.out.println("----- FIGHT ENDED -----");
+    private void drinkHealthPotion(Character player) {
+        int newHealthPoints;
+        if (player.getHealthPoints() == player.getMaxHealthPoints()) {
+            System.out.println("You already have maximum health points.");
+        } else {
+            newHealthPoints = Math.min(player.getHealthPoints() + 30, player.getMaxHealthPoints());
+            player.setHealthPoints(newHealthPoints);
+            System.out.println("You recovered 30 health points.");
+        }
     }
 
     private void attack(Character player, Character enemy) {
@@ -53,7 +67,7 @@ public class Combat {
             Thread.sleep(500);
             player.attack(enemy);
             if (enemy.getHealthPoints() <= 0) {
-                System.out.println(enemy.getName() + " has been defeated!");
+                System.out.println("\n"+enemy.getName() + " has been defeated!"+"\n");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

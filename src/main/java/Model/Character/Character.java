@@ -1,8 +1,7 @@
 package Model.Character;
 
+import Model.Equipment.Weapon;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public abstract class Character {
@@ -14,6 +13,7 @@ public abstract class Character {
     protected int dexterity;
     protected int defense;
     protected int intelligence;
+    protected Weapon equippedWeapon = null;
 
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = Math.max(healthPoints, 0);
@@ -21,20 +21,37 @@ public abstract class Character {
 
     /**
      * Attack an opponent character
-     * @param character Opponent character to attack
+     * @param target Opponent character to attack
      */
-    public abstract void attack(Character character);
+    public void attack(Character target) {
+        if (this.getHealthPoints() <= 0){
+            System.out.println("\n"+this.name + "is dead and cannot attack.");
+            return;
+        }
+        String weaponName = (equippedWeapon != null) ? equippedWeapon.getName() : "bare hands";
+        System.out.println("\n" + this.name + " hits with his " + weaponName + ".");
 
-    /**
-     * Bind a weapon to the character
-     */
-    public abstract void setWeapon();
+        int baseDamage = getAttackPower();
+        int weaponBonus = (equippedWeapon != null) ? equippedWeapon.getPowerAttack() : 0;
 
-    /**
-     * Get the character's information
-     * @return List of strings containing the character's information
-     */
-    public abstract List<String> getInfo();
+        double criticalFailChance = Math.max(0, (30.0 - target.getDexterity()) / 100.0);
+        if (Math.random() < criticalFailChance) {
+            System.out.println("It's not very effective... The attack misses!");
+            return;
+        }
 
+        double criticalHitChance = Math.min(0.5, this.dexterity / 100.0);
+        boolean isCriticalHit = Math.random() < criticalHitChance;
+        double damageMultiplier = isCriticalHit ? 1.5 : 1.0;
 
+        int finalDamage = (int) (((baseDamage + weaponBonus) - (target.getDefense() / 2.0)) * damageMultiplier);
+        finalDamage = Math.max(finalDamage, 1);
+        target.setHealthPoints(target.getHealthPoints() - finalDamage);
+
+        System.out.println(isCriticalHit ? "Wow, it's super effective!" : "Attack is successful!");
+        System.out.println(target.getName() + " loses " + finalDamage + " health points.");
+        System.out.println(target.getName() + " has " + target.getHealthPoints() + " health points left.");
+    }
+
+    protected abstract int getAttackPower();
 }

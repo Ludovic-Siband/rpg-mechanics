@@ -10,7 +10,7 @@ public class CombatView {
 
 
     public static void displayStartedFight(Character player, Character enemy) {
-        System.out.println("----- FIGHT STARTED -----");
+        System.out.println("\n----- FIGHT STARTED -----\n");
         displayHealthBar(player);
         displayHealthBar(enemy);
     }
@@ -29,20 +29,17 @@ public class CombatView {
             }
             healthBar.append("]");
 
-            System.out.println(character.getName() + " Health: " + healthBar + " " + character.getHealthPoints() + "/" + character.getMaxHealthPoints());
+            System.out.println(character.getName() + " - Health: " + healthBar + " " + character.getHealthPoints() + "/" + character.getMaxHealthPoints());
     }
 
     public static int displayFightMenu() {
-        System.out.println("===== Fight Menu =====");
+        System.out.println("\n===== Fight Menu =====\n");
         System.out.println("1. Attack");
         System.out.println("2. Defend");
         System.out.println("3. Use Health Potion");
         System.out.println("4. Flee");
 
-        System.out.print("Choose an action: ");
+        System.out.print("\nChoose an action: ");
         return scanner.nextInt();
     }
-
-
-
 }
