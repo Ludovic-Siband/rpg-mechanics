@@ -1,17 +1,13 @@
-package Model.Equipement;
+package Model.Equipment;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public abstract class Armure extends Equipement {
+public abstract class Armor extends Equipment {
     private String type;
     private int defense;
-
-    public Armure (String name, int weight, double price,String type, int defense) {
-        super(name, weight, price);
-        this.type = type;
-        this.defense = defense;
-    }
 
     @Override
     public String toString() {

@@ -1,10 +1,10 @@
-package Model.Equipement.Weapons;
+package Model.Equipment.Weapons;
 
-import Model.Equipement.Arme;
+import Model.Equipment.Weapon;
 import lombok.Data;
 
 @Data
-public class Sword extends Arme {
+public class Sword extends Weapon {
     public Sword(String name, int weight, double price, String type, int PowerAttack) {
         super(name, weight, price, type, PowerAttack);
     }

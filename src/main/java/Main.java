@@ -1,11 +1,7 @@
-import Model.Character.Character;
-import Model.Character.CharacterClasses.Archer;
-import Model.Character.CharacterClasses.Wizard;
-import Model.Equipement.Arme;
-import Model.Equipement.Weapons.Bow;
-import Model.Equipement.Weapons.Staff;
-import Model.Equipement.Weapons.Sword;
-import Model.Equipement.Equipement;
+import Model.Equipment.Weapon;
+import Model.Equipment.Weapons.Bow;
+import Model.Equipment.Weapons.Staff;
+import Model.Equipment.Weapons.Sword;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,13 +11,13 @@ public class Main {
 //
 //        ((Archer) archer).attack(wizard);
 
-            Arme Epee = new Sword("aiguille",10,34.6,"arme a une main",35);
-            Arme Baton = new Staff("baton de feu", 20,89,"baton magique",56);
-            Arme Arc = new Bow("tisseuse",10,120.6,"arc lourd",65);
+            /*Weapon Epee = new Sword("aiguille",10,34.6,"arme a une main",35);
+            Weapon Baton = new Staff("baton de feu", 20,89,"baton magique",56);
+            Weapon Arc = new Bow("tisseuse",10,120.6,"arc lourd",65);
 
             System.out.println(Epee);
             System.out.println(Baton);
-            System.out.println(Arc);
+            System.out.println(Arc);*/
 
         }
 }
