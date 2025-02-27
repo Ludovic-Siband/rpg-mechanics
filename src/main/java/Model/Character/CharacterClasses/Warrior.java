@@ -1,6 +1,7 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
+import Model.Character.CharacterClassType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +17,7 @@ public class Warrior extends Character {
         this.dexterity = 5;
         this.defense = 10;
         this.intelligence = 5;
+        this.characterClassType = CharacterClassType.WARRIOR;
     }
 
     @Override

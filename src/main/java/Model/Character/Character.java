@@ -3,6 +3,8 @@ package Model.Character;
 import Model.Equipment.Weapon;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public abstract class Character {
 
@@ -14,6 +16,7 @@ public abstract class Character {
     protected int defense;
     protected int intelligence;
     protected Weapon equippedWeapon = null;
+    protected CharacterClassType characterClassType;
 
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = Math.max(healthPoints, 0);
@@ -53,5 +56,15 @@ public abstract class Character {
         System.out.println(target.getName() + " has " + target.getHealthPoints() + " health points left.");
     }
 
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        if (equippedWeapon.getAllowedCharacterClasses() == null || !equippedWeapon.getAllowedCharacterClasses().contains(this.characterClassType)) {
+            System.out.println(this.name + " can't equip this weapon. Choose one compatible with your class.");
+        } else {
+            this.equippedWeapon = equippedWeapon;
+            System.out.println(this.name + " equipped the " + equippedWeapon.getName());
+        }
+    }
+
     protected abstract int getAttackPower();
+
 }

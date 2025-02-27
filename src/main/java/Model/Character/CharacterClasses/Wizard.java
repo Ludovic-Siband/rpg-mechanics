@@ -1,6 +1,7 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
+import Model.Character.CharacterClassType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,6 +21,7 @@ public class Wizard extends Character {
         this.dexterity = 10;
         this.defense = 15;
         this.intelligence = 20;
+        this.characterClassType = CharacterClassType.WIZARD;
     }
 
     @Override

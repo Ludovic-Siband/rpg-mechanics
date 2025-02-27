@@ -1,6 +1,7 @@
 package Model.Character.CharacterClasses;
 
 import Model.Character.Character;
+import Model.Character.CharacterClassType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,8 +20,8 @@ public class Archer extends Character {
         this.dexterity = 20;
         this.defense = 5;
         this.intelligence = 15;
+        this.characterClassType = CharacterClassType.ARCHER;
     }
-
 
     @Override
     protected int getAttackPower() {

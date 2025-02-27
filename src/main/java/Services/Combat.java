@@ -14,8 +14,9 @@ public class Combat {
     }
 
     public void start() {
+        boolean isFled = false;
 
-        while (player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0) {
+        while ((player.getHealthPoints() > 0 && enemy.getHealthPoints() > 0) && !isFled) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -39,6 +40,7 @@ public class Combat {
                     break;
                 case 4:
                     System.out.println("\nYou fled from the battle!");
+                    isFled = true;
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
@@ -46,7 +48,7 @@ public class Combat {
 
 
         }
-        System.out.println("===========================");
+        System.out.println("\n===========================");
         System.out.println("\n  ----- FIGHT ENDED -----\n");
         System.out.println("===========================");
     }

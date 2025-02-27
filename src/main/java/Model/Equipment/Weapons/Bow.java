@@ -16,10 +16,10 @@ import java.util.List;
 public class Bow extends Weapon {
 
     public Bow() {
-        this.name = "Staff";
+        this.name = "Bow";
         this.weight = 10;
         this.price = 100;
         this.PowerAttack = 10;
-        this.allowedCharacterClasses = List.of(CharacterClassType.ARCHER);
+        this.allowedCharacterClasses = List.of(CharacterClassType.ARCHER);;
     }
 }
