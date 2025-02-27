@@ -1,17 +1,21 @@
 package Model.Equipment;
 
+import Model.Character.CharacterClassType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 public abstract class Weapon extends Equipment {
-    public String type;
-   public int PowerAttack;
+    public int PowerAttack;
+    protected List<CharacterClassType> allowedCharacterClasses;
 
-    @Override
-    public String toString() {
-        return "My weapon is called " + this.name + ", it weighs " + this.weight + " kg, " + " it costs " + this.price + " gold coins, " + " it is of type " + this.type + ", and it deals " + this.PowerAttack + " damage.";
-
+    public Weapon() {
+        // Initialisation vide de allowedCharacterClasses si nécessaire
+        this.allowedCharacterClasses = new ArrayList<>();
     }
+
 }
